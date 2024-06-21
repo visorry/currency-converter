@@ -48,7 +48,8 @@ const App = () => {
       if (rate && !isNaN(rate)) {
         const result = amount * rate;
         const transaction = `${amount} ${fromCurrency} = ${result.toFixed(2)} ${toCurrency}`;
-        setTransactions([transaction, ...transactions.slice(0, 4)]);
+        const transactionWithDate = `${transaction} | ${new Date().toLocaleString()}`; // Append current date/time
+        setTransactions([transactionWithDate, ...transactions.slice(0, 4)]);
         setError('');
       } else {
         throw new Error(`Invalid rate fetched for ${fromCurrency} to ${toCurrency}`);
