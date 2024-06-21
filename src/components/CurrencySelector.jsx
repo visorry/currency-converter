@@ -4,8 +4,10 @@ const CurrencySelector = ({ label, currency, onChange, currencies }) => (
   <div>
     <label>{label}</label>
     <select value={currency} onChange={e => onChange(e.target.value)}>
-      {currencies.map(curr => (
-        <option key={curr} value={curr}>{curr}</option>
+      {Object.keys(currencies).map(code => (
+        <option key={code} value={code}>
+          {code} - {currencies[code] || 'Unknown'}
+        </option>
       ))}
     </select>
   </div>
